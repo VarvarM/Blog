@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<h2>Вы уверены что хотите удалить статью?</h2>
+<form action="../deletedata" method="post">
+    <input type="hidden" name="state_id" value={{state_id}}>
+    <p>
+        Подтвердите автора статьи:<br>
+        <input name="user"/>
+    </p>
+    <input type="submit" value="Удалить"/>
+</form>
+</body>
+</html>

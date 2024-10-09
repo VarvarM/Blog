@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<h2>Добавьте комментарий</h2>
+<form action="../../add_comment" method="post">
+    <input type="hidden" name="state_id" value={{state_id}}>
+    <p>
+        Автор:<br>
+        <input name="user"/>
+    </p>
+    <p>
+        Текст:<br>
+        <textarea name="text"></textarea>
+    </p>
+    <input type="submit" value="Добавить"/>
+</form>
+</body>
+</html>

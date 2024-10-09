@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<h2>Вы уверены что хотите удалить комментарий?</h2>
+<form action="../../../delete_comm" method="post">
+    <input type="hidden" name="state_id" value={{state_id}}>
+    <input type="hidden" name="comment_id" value={{comment_id}}>
+    <p>
+        Подтвердите автора комментария:<br>
+        <input name="user"/>
+    </p>
+    <input type="submit" value="Удалить"/>
+</form>
+</body>
+</html>
