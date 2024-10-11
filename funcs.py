@@ -2,7 +2,7 @@ from sqlalchemy import insert, select, update, delete
 
 from datetime import datetime
 from database import sync_engine
-from core.models.models import metadata, Blog_user, News, Comment
+# from core.models.models import metadata, Blog_user, News, Comment
 
 
 def create_tables():
