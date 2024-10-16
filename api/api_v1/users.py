@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from core.models import db_helper
-from core.schemas.user import UserRead, UserCreate
+from core.schemas.user import UserRead, UserCreate, UserUpdate, UserBase
 from crud.users import get_all_users
 from crud import users as users_crud
 
@@ -18,3 +18,13 @@ async def get_users(session: AsyncSession = Depends(db_helper.session_getter)):
 async def create_user(user_create: UserCreate, session: AsyncSession = Depends(db_helper.session_getter)):
     user = await users_crud.create_user(session=session, user_create=user_create)
     return user
+
+
+@router.put('/{user_id}', response_model=UserRead)
+async def update_user(user_update: UserUpdate, user: UserBase = Depends(user_id), session: AsyncSession = Depends(
+    db_helper.session_getter)):
+    return await users_crud.update_user(session=session, user_update=user_update, user=user)
+
+@router.delete('/{user_id')
+async def delete_user(user:UserBase = Depends(user_id), session: AsyncSession = Depends(db_helper.session_getter)):
+    return await users_crud.delete_user(session=session, user=user)
