@@ -4,7 +4,7 @@ from core.models import db_helper
 from core.schemas.user import UserRead, UserCreate, UserUpdate, UserBase
 from crud.users import get_all_users
 from crud import users as users_crud
-from dependencies import user_by_id
+from crud.dependencies import user_by_id
 
 router = APIRouter(tags=["Users"])
 
