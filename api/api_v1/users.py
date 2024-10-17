@@ -4,6 +4,7 @@ from core.models import db_helper
 from core.schemas.user import UserRead, UserCreate, UserUpdate, UserBase
 from crud.users import get_all_users
 from crud import users as users_crud
+from dependencies import user_by_id
 
 router = APIRouter(tags=["Users"])
 
@@ -21,10 +22,11 @@ async def create_user(user_create: UserCreate, session: AsyncSession = Depends(d
 
 
 @router.put('/{user_id}', response_model=UserRead)
-async def update_user(user_update: UserUpdate, user: UserBase = Depends(user_id), session: AsyncSession = Depends(
-    db_helper.session_getter)):
+async def update_user(user_update: UserUpdate, user: User = Depends(user_by_id),
+                      session: AsyncSession = Depends(db_helper.session_getter)):
     return await users_crud.update_user(session=session, user_update=user_update, user=user)
 
-@router.delete('/{user_id')
-async def delete_user(user:UserBase = Depends(user_id), session: AsyncSession = Depends(db_helper.session_getter)):
+
+@router.delete('/{user_id}')
+async def delete_user(user: UserBase = Depends(user_by_id), session: AsyncSession = Depends(db_helper.session_getter)):
     return await users_crud.delete_user(session=session, user=user)
