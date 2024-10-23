@@ -16,7 +16,7 @@ async def user_by_id(user_id: Annotated[int, Path],
 
 async def publication_by_id(publication_id: Annotated[int, Path],
                             session: AsyncSession = Depends(db_helper.session_getter)) -> Publication:
-   publication = await publications.get_publication(session=session, publication_id=publication_id)
-   if publication is not None:
-       return publication
-   raise HTTPException(status=status.HTTP_404_NOT_FOUND, detail=f"Publication {publication_id} not found")
+    publication = await publications.get_publication(session=session, publication_id=publication_id)
+    if publication is not None:
+        return publication
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Publication {publication_id} not found")

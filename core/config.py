@@ -28,6 +28,7 @@ class DbSettings(BaseSettings):
 class ApiV1Prefix(BaseModel):
     prefix: str = '/v1'
     users: str = '/users'
+    publications: str = '/publications'
 
 
 class ApiPrefix(BaseModel):

@@ -22,14 +22,14 @@ async def create_publication(session: AsyncSession, publication_create: Publicat
     return publication
 
 
-async def update_publication(
-    session: AsyncSession, publication_update: PublicationUpdate, publication: Publication) -> Publication:
+async def update_publication(session: AsyncSession, publication_update: PublicationUpdate,
+                             publication: Publication) -> Publication:
     for name, value in publication_update.model_dump().items():
         setattr(publication, name, value)
     await session.commit()
     return publication
 
 
-async def delete_publication(session: AsyncSession, publication:Publication) -> None:
+async def delete_publication(session: AsyncSession, publication: Publication) -> None:
     await session.delete(publication)
     await session.commit()
